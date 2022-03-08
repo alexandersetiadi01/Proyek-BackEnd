@@ -3,11 +3,11 @@ const cors = require("cors");
 const argon2 = require("argon2");
 const app = express();
 const path = require('path');
-/*var corsOptions = {
-  origin: "http://localhost:8081"
-};*/
+var corsOptions = {
+  origin: "https://dbsolution.herokuapp.com"
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(express.json());
 

@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const argon2 = require("argon2");
 const app = express();
+const path = require('path');
 /*var corsOptions = {
   origin: "http://localhost:8081"
 };*/
@@ -30,11 +31,19 @@ require("./routes/userRoutes")(express, app);
 require("./routes/proyekRoutes")(express, app);
 require("./routes/purchasingRoutes")(express, app);
 
+const publicPath = path.join(__dirname + "/public");
+
+app.use(express.static(publicPath));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+
 
 
 /*

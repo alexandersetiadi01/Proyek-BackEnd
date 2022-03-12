@@ -1,5 +1,6 @@
 const db = require("../models");
 const Op = db.Sequelize.Op;
+const readXlsxFile = require("read-excel-file/node");
 
 exports.create = async (req, res) => {
     /*const barang = {

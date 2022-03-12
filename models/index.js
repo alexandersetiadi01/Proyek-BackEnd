@@ -41,15 +41,16 @@ async function addUser(){
   if(count > 0){
     return;
   }else{
-    const argon2 = require("argon2");
-
-    let hash = await argon2.hash("test123", { type: argon2.argon2id });
-    await db.users.createUser({ ID: "11111", username: "Alex", password: hash, accountLevel: ""});
+    await db.users.createUser({ ID: "111", username: "Tester", password: "111", accountLevel: "ADMIN"});
   }
 }
 
+// Include a sync option with seed data logic included.
 db.sync = async () => {
+  // Sync schema.
+  await db.sequelize.sync();
+  
   await addUser();
-}
-*/
+}; */
+
 module.exports = db;

@@ -30,6 +30,7 @@ require("./routes/inventoryRoutes")(express, app);
 require("./routes/userRoutes")(express, app);
 require("./routes/proyekRoutes")(express, app);
 require("./routes/purchasingRoutes")(express, app);
+require("./routes/activityRoutes")(express, app);
 
 const publicPath = path.join(__dirname + "/public");
 
@@ -43,11 +44,3 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
-
-
-
-/*
-app.get("/", (req, res) => {
-  res.json({ message: "testing backend" });
-});
-*/

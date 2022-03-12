@@ -1,28 +1,26 @@
-const { barangMasuk, barangKeluar, activity} = require("../models");
-const { QueryTypes } = require('sequelize');
 const db = require("../models");
 const Op = db.Sequelize.Op;
 
 exports.seeActvity = async (req, res) => {
-    const activities = await activity.findAll();
+ 
+    const act = await db.activity.findAll();
 
-    res.json(activities)
-};
+    res.json(act);
+}
+
+exports.getActivity = async (req, res) => {
+    const action = await db.activity.findAll();
+
+    res.json(action);
+}
+
 
 exports.addActivity = async (req, res) => {
-    const barang = await db.barangMasuk.create({
-        kode: req.body.kode,
-        namabarang: req.body.namabarang,
-        namaOrang: req.body.namaOrang,
-        quantity: req.body.quantity,
-        progress: req.body.progress,
-        namaOrang: req.body.namaOrang,
-        status: req.body.status,
-        noSuratJalan: req.body.noSuratJalan,
+    const barang = await activity.create({
+        username: req.body.username,
+        activity: req.body.activity,
         tgl: req.body.tgl,
-        tglUpdate: req.body.tglUpdate
-
-        
+        pryek: req.body.proyek
     });
     res.json(barang)
 };

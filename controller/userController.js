@@ -27,4 +27,6 @@ exports.createUser = async (req, res) => {
         password: hash,
         accountLevel: req.body.accountLevel
     })
+
+    res.json(user);
 };

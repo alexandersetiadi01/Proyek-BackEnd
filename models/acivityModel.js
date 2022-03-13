@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        activity: {
+        action: {
             type: DataTypes.STRING,
             allowNull: false
         },

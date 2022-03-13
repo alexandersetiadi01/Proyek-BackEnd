@@ -5,7 +5,9 @@ module.exports = (express, app) => {
     router.get("/getActivity", controller.getActivity);
     router.get("/", controller.seeAll);
   
-    router.post("/addActivity", controller.addActivity);
+    router.post("/addActivityMasuk", controller.addActivityMasuk);
+    router.post("/addActivitySisa", controller.addActivitySisa);
+    router.post("/addActivityKeluar", controller.addActivityKeluar);
 
     //router.get("/search", controller.searchByName);
   

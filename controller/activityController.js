@@ -15,10 +15,32 @@ exports.getActivity = async (req, res) => {
 }
 
 
-exports.addActivity = async (req, res) => {
-    const barang = await activity.create({
+exports.addActivityMasuk = async (req, res) => {
+    const barang = await db.activity.create({
         username: req.body.username,
-        activity: req.body.activity,
+        action: "barang masuk",
+        tgl: req.body.tgl,
+        proyek: req.body.proyek
+    });
+    res.json(barang)
+};
+
+
+exports.addActivitySisa = async (req, res) => {
+    const barang = await db.activity.create({
+        username: req.body.username,
+        action: "barang sisa",
+        tgl: req.body.tgl,
+        proyek: req.body.proyek
+    });
+    res.json(barang)
+};
+
+
+exports.addActivityKeluar = async (req, res) => {
+    const barang = await db.activity.create({
+        username: req.body.username,
+        action: "barang keluar",
         tgl: req.body.tgl,
         proyek: req.body.proyek
     });

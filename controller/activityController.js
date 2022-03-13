@@ -1,15 +1,15 @@
 const db = require("../models");
 const Op = db.Sequelize.Op;
+const seq = require('sequelize')
 
-exports.seeActvity = async (req, res) => {
- 
+exports.seeAll = async (req, res) => {
     const act = await db.activity.findAll();
 
-    res.json(act);
+    res.json(act)
 }
 
 exports.getActivity = async (req, res) => {
-    const action = await db.activity.findAll();
+    const action = await seq.query('SELECT * FROM activity', {type: seq.QueryTypes.SELECT})
 
     res.json(action);
 }
@@ -20,7 +20,7 @@ exports.addActivity = async (req, res) => {
         username: req.body.username,
         activity: req.body.activity,
         tgl: req.body.tgl,
-        pryek: req.body.proyek
+        proyek: req.body.proyek
     });
     res.json(barang)
 };

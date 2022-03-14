@@ -10,7 +10,8 @@ exports.createBarangMasuk = async (req, res) => {
         noSuratJalan: req.body.noSuratJalan,
         tgl: req.body.tgl,
         status: "masuk",
-        lokasi: req.body.lokasi
+        lokasi: req.body.lokasi,
+        proyek: req.body.proyek
     });
     res.json(barang)
 };
@@ -24,7 +25,8 @@ exports.createBarangSisa = async (req, res) => {
         noSuratJalan: req.body.noSuratJalan,
         tgl: req.body.tgl,
         status: "sisa",
-        lokasi: req.body.lokasi
+        lokasi: req.body.lokasi,
+        proyek: req.body.proyek
     });
     res.json(barang)
 };

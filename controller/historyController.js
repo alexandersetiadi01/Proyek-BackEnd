@@ -4,7 +4,7 @@ const db = require("../models");
 const Op = db.Sequelize.Op;
 
 exports.seeInventory = async (req, res) => {
-    const inventory = await barangMasuk.findAll({
+    const inventory = await history.findAll({
         include:[{
             model: barangKeluar
         }]
@@ -15,7 +15,7 @@ exports.seeInventory = async (req, res) => {
 
 
 exports.addHistory = async (req, res) => {
-    const barang = await db.barangMasuk.create({
+    const barang = await db.history.create({
         proyek: req.body.proyek,
         namabarang: req.body.namabarang,
         quantity: req.body.quantity,  

@@ -14,6 +14,7 @@ exports.getActivity = async (req, res) => {
     res.json(action);
 }
 
+const datePickerIconst = new Date().toLocaleDateString();
 
 exports.addActivityMasuk = async (req, res) => {
     const barang = await db.activity.create({

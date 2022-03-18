@@ -7,6 +7,8 @@ module.exports = (express, app) => {
     router.get("/listBarangSisa", controller.seeAllBarangSisa);
 
     router.get("/", controller.seeAllBarang);
+
+    router.get("/getPO", controller.getPO);
   
     router.post("/addBarangMasuk", controller.createBarangMasuk);
 

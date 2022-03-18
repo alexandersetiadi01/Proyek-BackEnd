@@ -62,6 +62,19 @@ exports.seeAllBarang = async (req, res) => {
     res.json(barangSisa);
 }
 
+exports.getPO = async (req, res) => {
+    const barang = await db.barangMasuk.findAll(
+        {
+            where: {
+                namabarang: req.params.namabarang
+            },
+            //attributes: {include: ['kodePO', 'proyek']}
+        }
+    );
+
+    res.json(barang);
+}
+
 exports.searchByName = async (req, res) => {
 
     const barangMasuk = await db.barangMasuk.findAll({

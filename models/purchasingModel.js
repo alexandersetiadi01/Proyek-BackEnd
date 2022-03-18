@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     {
         kodePO:{ //PK
             type: DataTypes.STRING,
-            primaryKey: true,
+            //primaryKey: true,
             allowNull: false
         },
         namabarang:{

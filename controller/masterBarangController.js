@@ -47,6 +47,16 @@ exports.seeAll = async (req, res) => {
     res.json(masterBarang);
 };
 
+exports.seeMasterBarangProyek = async (req, res) => {
+    const masterBarang = await db.masterBarang.findAll({
+        where: {
+            proyek: req.params.namaProyek
+        }
+    });
+
+    res.json(masterBarang);
+};
+
 exports.checkBarang = async (req, res) => {
     const masterBarang = await db.masterBarang.findByPk(req.query.namabarang);
 

@@ -2,28 +2,7 @@ const db = require("../models");
 const Op = db.Sequelize.Op;
 
 exports.create = async (req, res) => {
-    /*const barang = {
-        kodebarang: req.body.kodebarang,
-        namabarang: req.body.namabarang,
-        category: req.body.category, 
-        subCategory: req.body.subCategory,
-        type: req.body.type,
-        merk: req.body.merk,  
-        satuan: req.body.satuan,
-        ukuran: req.body.ukuran
-    };
-    db.masterBarang.create(barang)
-    .then(data => {
-        res.send(data);
-    }).catch(
-        err => {
-            res.status(500).send({
-                message:
-                  err.message || "Some error occurred while creating the masterbarang."
-              });
-        }
-    )
-    */
+    
     const barang = await db.inventory.create({
         //kodebarang: req.body.kodebarang,
         namabarang: req.body.namabarang,

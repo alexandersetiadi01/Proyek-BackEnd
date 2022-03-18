@@ -2,6 +2,13 @@ const db = require("../models");
 const Op = db.Sequelize.Op;
 
 exports.createPurchasing = async (req, res) => {
+    const found = await db.PO.findByPk(req.body.kodePO);
+    if(found === null){
+        const PO = await db.PO.create({
+            kodePO: req.body.kodePO,
+            proyek: req.body.proyek
+        })
+    }
     const purchase = await db.purchasing.create({
         namabarang: req.body.namabarang,
         kodePO: req.body.kodePO,
@@ -23,16 +30,20 @@ exports.seeAllPurchasing = async (req, res) => {
 };
 
 exports.getInfo = async (req, res) => {
+    /*const namaBarang = req.body.namabarang;
     const purchase = await db.purchasing.findAll({
         where: {
-            namabarang: req.body.namabarang,
+            namabarang: namaBarang
         }
-    })
-    res.json(purchase);
+    })*/
+    
+    //res.json(purchase);
 }
 
-exports.update = (req, res) => {
-  
+exports.getPO = async (req, res) => {
+    const PO = await db.PO.findAll();
+
+    res.json(PO);
 };
 
 exports.delete = (req, res) => {

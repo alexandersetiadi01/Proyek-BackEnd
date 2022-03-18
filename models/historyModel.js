@@ -7,9 +7,6 @@ module.exports = (sequelize, DataTypes) => {
         namabarang:{ 
             type: DataTypes.STRING,
         },
-        namaPenerima:{
-            type: DataTypes.STRING,
-        },
         quantity:{
             type: DataTypes.INTEGER,
         },
@@ -26,5 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     {
         freezeTableName: true,
     });
+    history.removeAttribute('id');
     return history;
 }

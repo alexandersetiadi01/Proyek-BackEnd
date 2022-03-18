@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         tgl: { //tgl barang
-            type: DataTypes.DATE
+            type: DataTypes.DATEONLY
         },
         proyek: {
             type: DataTypes.STRING

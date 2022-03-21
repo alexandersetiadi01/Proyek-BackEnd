@@ -23,8 +23,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         noSuratJalan:{
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING
         },
         tgl:{ 
             allowNull: false,

@@ -26,10 +26,12 @@ db.activity = require("./acivityModel")(sequelize, Sequelize);
 db.inventory = require("./inventoryModel")(sequelize, Sequelize);
 db.supplier = require("./supplierModel")(sequelize, Sequelize);
 db.PO = require("./POmodel")(sequelize, Sequelize);
+db.barangSisa = require("./barangSisaModel")(sequelize, Sequelize);
 //db.masterBarang.hasMany(db.barangMasuk, {foreignKey: 'namabarang', targetKey: 'namabarang'})
 
 db.barangMasuk.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
 db.barangKeluar.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
+db.barangSisa.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
 //db.purchasing.belongsTo(db.barangMasuk, {foreignKey: "kodePO", source: "kodePO"});
 db.purchasing.belongsTo(db.PO, {foreignKey: "kodePO", source: "kodePO"});
 db.barangMasuk.belongsTo(db.PO, {foreignKey: "kodePO", source: "kodePO"});

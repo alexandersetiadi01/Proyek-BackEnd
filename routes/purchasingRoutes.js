@@ -8,7 +8,7 @@ module.exports = (express, app) => {
 
     router.get("/getPO", controller.getPO);
 
-    router.get("/KodePO", controller.getInfo);
+    router.get("/getInfo", controller.getInfo);
   
     app.use("/api/purchasing", router);
   };

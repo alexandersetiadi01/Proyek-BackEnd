@@ -1,11 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
-    const barangMasuk = sequelize.define('barangMasuk',
+    const barangSisa = sequelize.define('barangSisa',
     {
         namabarang:{ //FK master barang
             type: DataTypes.STRING,
             allowNull: false
         },
-        kodemasuk:{ //PK auto increment
+        kodeSisa:{ //PK auto increment
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
@@ -23,8 +23,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         noSuratJalan:{
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING
         },
         tgl:{ 
             allowNull: false,
@@ -47,5 +46,5 @@ module.exports = (sequelize, DataTypes) => {
     {
         freezeTableName: true,
     });
-    return barangMasuk;
+    return barangSisa;
 }

@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         quantity:{
-            type: DataTypes.INTEGER,
+            type: DataTypes.DOUBLE,
             allowNull: false
         },
         namaPengambil:{
@@ -34,6 +34,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING
         },
         proyek:{
+            type: DataTypes.STRING
+        },
+        keterangan:{
             type: DataTypes.STRING
         }
     },

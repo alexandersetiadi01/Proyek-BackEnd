@@ -4,16 +4,10 @@ module.exports = (express, app) => {
   
     router.get("/listBarangMasuk", controller.seeAllBarangMasuk);
 
-    router.get("/listBarangSisa", controller.seeAllBarangSisa);
-
-    router.get("/", controller.seeAllBarang);
 
     router.get("/getPO", controller.getPO);
   
     router.post("/addBarangMasuk", controller.createBarangMasuk);
-
-    router.post("/addBarangSisa", controller.createBarangSisa);
-
 
   //  router.get("/Search", controller.searchByName);
   

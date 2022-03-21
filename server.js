@@ -24,6 +24,7 @@ db.sequelize.sync(
 
 require("./routes/masterBarangRoutes")(express, app);
 require("./routes/barangMasukRoutes")(express, app);
+require("./routes/barangSisaRoutes")(express, app);
 require("./routes/barangKeluarRoutes")(express, app);
 require("./routes/historyRoutes")(express, app);
 require("./routes/inventoryRoutes")(express, app);

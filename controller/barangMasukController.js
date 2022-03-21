@@ -7,11 +7,12 @@ exports.createBarangMasuk = async (req, res) => {
         kodePO: req.body.kodePO,
         namaPenerima: req.body.namaPenerima,
         quantity: req.body.quantity,  
-        noSuratJalan: req.body.noSuratJalan,
+        noSuratJalan: req.body.noSuratJalan1 + req.body.noSuratJalan2,
         tgl: req.body.tgl,
         status: "masuk",
         lokasi: req.body.lokasi,
-        proyek: req.body.proyek
+        proyek: req.body.proyek,
+        keterangan: req.body.keterangan
     });
     res.json(barang)
 };
@@ -22,44 +23,20 @@ exports.createBarangSisa = async (req, res) => {
         kodePO: req.body.kodePO,
         namaPenerima: req.body.namaPenerima,
         quantity: req.body.quantity,  
-        noSuratJalan: req.body.noSuratJalan,
+        noSuratJalan:  req.body.noSuratJalan1 + req.body.noSuratJalan2,
         tgl: req.body.tgl,
         status: "sisa",
         lokasi: req.body.lokasi,
-        proyek: req.body.proyek
+        proyek: req.body.proyek,
+        keterangan: req.body.keterangan
     });
     res.json(barang)
 };
 
 exports.seeAllBarangMasuk = async (req, res) => {
-    const barangMasuk = await db.barangMasuk.findAll(
-        {
-            where: {
-                status: "masuk"
-            }
-        }
-    );
+    const barangMasuk = await db.barangMasuk.findAll();
 
     res.json(barangMasuk);
-}
-
-exports.seeAllBarangSisa = async (req, res) => {
-    const barangSisa = await db.barangMasuk.findAll(
-        {
-            where: {
-                status: "sisa"
-            }
-        }
-    );
-
-    res.json(barangSisa);
-}
-
-
-exports.seeAllBarang = async (req, res) => {
-    const barangSisa = await db.barangMasuk.findAll();
-
-    res.json(barangSisa);
 }
 
 exports.getPO = async (req, res) => {

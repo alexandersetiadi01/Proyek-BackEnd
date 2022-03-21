@@ -10,7 +10,8 @@ exports.create = async (req, res) => {
         tgl: req.body.tgl,
         progress: req.body.progress,
         status: "keluar",
-        proyek: req.body.proyek
+        proyek: req.body.proyek,
+        keterangan: req.body.keterangan
     });
     res.json(barang)
 };

@@ -30,7 +30,13 @@ exports.seeAllPurchasing = async (req, res) => {
 };
 
 exports.getInfo = async (req, res) => {
-    const found = await db.PO.findByPk(req.body.kodePO);
+    const found = await db.purchasing.findAll({
+        where: {
+            namabarang: req.body.namabarang,
+            proyek: req.body.proyek,
+            kodePO: req.body.kodePO
+        }
+    });
     if(found !== null){
         res.json(found);
     }

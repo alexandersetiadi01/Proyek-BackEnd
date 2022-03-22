@@ -38,6 +38,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         keterangan:{
             type: DataTypes.STRING
+        },
+        tujuan:{
+            type: DataTypes.STRING
         }
     },
     {

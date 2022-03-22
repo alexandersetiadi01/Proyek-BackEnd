@@ -10,10 +10,6 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        kodePO:{
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         namaPenerima:{
             type: DataTypes.STRING,
             allowNull: false
@@ -21,9 +17,6 @@ module.exports = (sequelize, DataTypes) => {
         quantity:{
             type: DataTypes.DOUBLE,
             allowNull: false
-        },
-        noSuratJalan:{
-            type: DataTypes.STRING
         },
         tgl:{ 
             allowNull: false,

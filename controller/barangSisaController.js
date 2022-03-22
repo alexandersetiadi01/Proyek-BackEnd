@@ -4,10 +4,8 @@ const Op = db.Sequelize.Op;
 exports.createBarangSisa = async (req, res) => {
     const barang = await db.barangSisa.create({
         namabarang: req.body.namabarang,
-        kodePO: req.body.kodePO,
         namaPenerima: req.body.namaPenerima,
-        quantity: req.body.quantity,  
-        noSuratJalan:  req.body.noSuratJalan1 + req.body.noSuratJalan2,
+        quantity: req.body.quantity,
         tgl: req.body.tgl,
         status: "sisa",
         lokasi: req.body.lokasi,

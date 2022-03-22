@@ -20,7 +20,13 @@ exports.seeAll = async (req, res) => {
 
 exports.findItem = async (req, res) => {
     const found = await db.inventory.findByPk(req.query.namabarang);
-
+    /*const found = await db.inventory.findOne({
+        where: {
+            namabarang: req.body.namabarang,
+            proyek: req.body.proyek
+        }
+    });
+    */
     res.json(found);
 }
 
@@ -28,20 +34,12 @@ exports.findItem = async (req, res) => {
 //testing (failed)
 exports.inventoryBarangMasuk = async (req, res) => {
     const found = await db.inventory.findByPk(req.body.namabarang);
-
-    /*const update = await db.inventory.update(
-        {   
-            quantity: req.body.totalQTY
-        },
-        {
-            where: {
-                namabarang: req.body.namabarang
-            }
+    /*const found = await db.inventory.findOne({
+        where: {
+            namabarang: req.body.namabarang,
+            proyek: req.body.proyek
         }
-    )
-    res.json(update);
-    */
-    
+    });*/
     if(found !== null){
 
         const update = await db.inventory.update(
@@ -50,7 +48,8 @@ exports.inventoryBarangMasuk = async (req, res) => {
             },
             {
                 where: {
-                    namabarang: req.body.namabarang
+                    namabarang: req.body.namabarang,
+                    proyek: req.body.proyek
                 }
             }
         )

@@ -48,6 +48,26 @@ exports.addActivityKeluar = async (req, res) => {
     res.json(barang)
 };
 
+exports.addActivityPurchasing = async (req, res) => {
+    const barang = await db.activity.create({
+        username: req.body.username,
+        action: "Purchasing",
+        tgl: req.body.tgl,
+        proyek: req.body.proyek
+    });
+    res.json(barang)
+};
+
+exports.addActivityAsset = async (req, res) => {
+    const barang = await db.activity.create({
+        username: req.body.username,
+        action: "Asset",
+        tgl: req.body.entry,
+        proyek: req.body.proyek
+    });
+    res.json(barang)
+};
+
 /*
 exports.seeHistory = async (req, res) => {
     const history = await sequelize.query(

@@ -30,3 +30,26 @@ exports.createUser = async (req, res) => {
 
     res.json(user);
 };
+
+exports.updateUser = async(req, res) => {
+    const hash = await argon2.hash(req.body.password, { type: argon2.argon2id });
+    const found = await db.users.findByPk(req.body.ID);
+    
+    if(found !== null){
+
+        const update = await db.users.update(
+            {   
+                password: hash
+            },
+            {
+                where: {
+                    ID: req.body.ID,
+                    //proyek: req.body.proyek
+                }
+            }
+        )
+        res.json(update);
+    }else{
+        return;
+    }
+}

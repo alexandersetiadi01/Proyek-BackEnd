@@ -3,12 +3,13 @@ module.exports = (express, app) => {
     const router = express.Router();
   
     router.get("/", controller.seeAll);
-  
-    router.post("/", controller.create);
-
     router.get("/search", controller.searchByName);
     router.get("/list", controller.seeMasterBarangProyek);
     router.get("/check", controller.checkBarang);
+  
+    router.post("/", controller.create);
+
+    router.put("/update", controller.update);
   
     app.use("/api/masterBarang", router);
   };

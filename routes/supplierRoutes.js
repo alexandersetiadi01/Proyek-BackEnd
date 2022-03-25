@@ -5,6 +5,8 @@ module.exports = (express, app) => {
     router.get("/", controller.seeAllSupplier);
     router.get("/select", controller.selectSupplier);
 
+    router.put("/", controller.update);
+
     router.post("/", controller.createSupplier);
   
     app.use("/api/supplier", router);

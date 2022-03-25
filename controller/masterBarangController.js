@@ -71,8 +71,37 @@ exports.searchByName = async(req, res) => {
     res.json(masterBarang);
 };
 
-exports.update = (req, res) => {
-  
+exports.update = async(req, res) => {
+    const found = await db.masterBarang.findByPk(req.body.namabarang);
+    /*const found = await db.inventory.findOne({
+        where: {
+            namabarang: req.body.namabarang,
+            proyek: req.body.proyek
+        }
+    });*/
+    if(found !== null){
+
+        const update = await db.masterBarang.update(
+            {   
+                category: req.body.category, 
+                subCategory: req.body.subCategory,
+                type: req.body.type,
+                merk: req.body.merk,  
+                satuan: req.body.satuan,
+                ukuran: req.body.ukuran
+            },
+            {
+                where: {
+                    namabarang: req.body.namabarang,
+                    //proyek: req.body.proyek
+                }
+            }
+        )
+        res.json(update);
+    }else{
+        return;
+    }
+    
 };
 
 exports.delete = (req, res) => {

@@ -33,6 +33,8 @@ require("./routes/proyekRoutes")(express, app);
 require("./routes/purchasingRoutes")(express, app);
 require("./routes/activityRoutes")(express, app);
 require("./routes/supplierRoutes")(express, app);
+require("./routes/outstandingRoutes")(express, app);
+require("./routes/assetRoutes")(express, app);
 
 const publicPath = path.join(__dirname + "/public");
 

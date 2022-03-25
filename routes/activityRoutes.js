@@ -8,6 +8,8 @@ module.exports = (express, app) => {
     router.post("/addActivityMasuk", controller.addActivityMasuk);
     router.post("/addActivitySisa", controller.addActivitySisa);
     router.post("/addActivityKeluar", controller.addActivityKeluar);
+    router.post("/addActivityPurchasing", controller.addActivityPurchasing);
+    router.post("/addActivityAsset", controller.addActivityAsset);
 
     //router.get("/search", controller.searchByName);
   

@@ -19,14 +19,25 @@ exports.seeAll = async (req, res) => {
 };
 
 exports.findItem = async (req, res) => {
-    const found = await db.inventory.findByPk(req.query.namabarang);
-    /*const found = await db.inventory.findOne({
+    /*const namabarang = JSON.stringify(req.body.namabarang)
+    const proyek = JSON.stringify(req.body.proyek)
+    const found = await db.inventory.findAll({
         where: {
-            namabarang: req.body.namabarang,
-            proyek: req.body.proyek
+            namabarang: namabarang,
+            proyek: proyek
         }
     });
-    */
+    if(found !== null) {
+        return true
+    }else{
+        return false
+    }*/
+    /*const found = await db.inventory.findAll({ 
+        where: { 
+            namabarang: req.params.namabarang, proyek: req.params.proyek 
+        } 
+    }).then(found => res.json(found));*/
+    const found = await db.inventory.findByPk(req.query.namabarang);
     res.json(found);
 }
 
@@ -49,7 +60,7 @@ exports.inventoryBarangMasuk = async (req, res) => {
             {
                 where: {
                     namabarang: req.body.namabarang,
-                    proyek: req.body.proyek
+                    //proyek: req.body.proyek
                 }
             }
         )

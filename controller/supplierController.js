@@ -23,8 +23,22 @@ exports.selectSupplier = async (req, res) => {
     res.json(supplier);
 }
 
-exports.update = (req, res) => {
-  
+exports.update = async(req, res) => {
+    const found = await db.supplier.findByPk(req.body.namaSupplier);
+
+    if(found !== null){
+        const update = await db.supplier.update({   
+            Pic: req.body.Pic,
+            code: req.body.code,
+            tlp: req.body.tlp
+        },
+        {
+            where: {
+                namaSupplier: req.body.namaSupplier
+            }
+        })
+        res.json(update);
+    }
 };
 
 exports.delete = (req, res) => {

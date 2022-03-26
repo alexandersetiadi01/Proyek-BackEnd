@@ -26,6 +26,9 @@ module.exports = (sequelize, DataTypes) => {
         lokasi:{
             type: DataTypes.STRING
         },
+        keterangan:{
+            type: DataTypes.STRING
+        },
         proyek:{  //masuk ke proyek mana barangnya
             type: DataTypes.STRING,
             //allowNull: false

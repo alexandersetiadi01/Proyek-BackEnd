@@ -10,7 +10,8 @@ exports.create = async (req, res) => {
         nomor: req.body.nomor, 
         entry: req.body.entry,
         proyek: req.body.proyek,
-        lokasi: req.body.lokasi
+        lokasi: req.body.lokasi,
+        keterangan: req.body.keterangan
     });
     res.json(asset)
 };
@@ -39,7 +40,8 @@ exports.update = async (req, res) => {
         const update = await db.asset.update(
             {   
                 entry: req.body.entry,
-                lokasi: req.body.lokasi
+                lokasi: req.body.lokasi,
+                keterangan: req.body.keterangan
             },
             {
                 where: {

@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         keterangan:{
             type: DataTypes.STRING
+        }, 
+        Pic:{
+            type: DataTypes.STRING
         },
         proyek:{  //masuk ke proyek mana barangnya
             type: DataTypes.STRING,

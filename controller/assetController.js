@@ -11,7 +11,8 @@ exports.create = async (req, res) => {
         entry: req.body.entry,
         proyek: req.body.proyek,
         lokasi: req.body.lokasi,
-        keterangan: req.body.keterangan
+        keterangan: req.body.keterangan,
+        Pic: req.body.Pic
     });
     res.json(asset)
 };
@@ -41,7 +42,8 @@ exports.update = async (req, res) => {
             {   
                 entry: req.body.entry,
                 lokasi: req.body.lokasi,
-                keterangan: req.body.keterangan
+                keterangan: req.body.keterangan,
+                Pic: req.body.Pic
             },
             {
                 where: {

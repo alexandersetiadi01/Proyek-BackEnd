@@ -11,7 +11,8 @@ exports.createBarangMasuk = async (req, res) => {
         status: "masuk",
         lokasi: req.body.lokasi,
         proyek: req.body.proyek,
-        keterangan: req.body.keterangan
+        keterangan: req.body.keterangan,
+        satuan: req.body.satuan
     });
     res.json(barang)
 };

@@ -23,12 +23,15 @@ db.users = require("./user")(sequelize, Sequelize);
 db.proyeks = require("./proyekModel")(sequelize, Sequelize);
 db.purchasing = require("./purchasingModel")(sequelize, Sequelize);
 db.activity = require("./acivityModel")(sequelize, Sequelize);
-db.inventory = require("./inventoryModel")(sequelize, Sequelize);
+//db.inventory = require("./inventoryModel")(sequelize, Sequelize);
 db.supplier = require("./supplierModel")(sequelize, Sequelize);
 db.PO = require("./POmodel")(sequelize, Sequelize);
 db.barangSisa = require("./barangSisaModel")(sequelize, Sequelize);
 db.outstanding = require("./outstandingModel")(sequelize, Sequelize);
 db.asset = require("./assetModel")(sequelize, Sequelize);
+db.satuan = require("./satuanModel")(sequelize, Sequelize);
+db.inventoryVanyaParkClusterAzura = require("./inventoryVanyaParkClusterAzureModel")(sequelize, Sequelize);
+db.inventoryKantorKelurahanCilenggang = require("./inventoryKantorKelurahanCilenggangModel")(sequelize, Sequelize);
 //db.masterBarang.hasMany(db.barangMasuk, {foreignKey: 'namabarang', targetKey: 'namabarang'})
 
 db.barangMasuk.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});

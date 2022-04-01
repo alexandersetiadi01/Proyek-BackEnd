@@ -32,6 +32,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         status:{
             type: DataTypes.STRING
+        }, 
+        satuan:{
+            type: DataTypes.STRING
         },
         proyek:{
             type: DataTypes.STRING

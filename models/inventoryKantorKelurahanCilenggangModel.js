@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const inventory = sequelize.define('inventory',
+    const inventoryKantorKelurahanCilenggang = sequelize.define('inventoryKantorKelurahanCilenggang',
     {
         /*id:{
             type: DataTypes.INTEGER,
@@ -27,5 +27,5 @@ module.exports = (sequelize, DataTypes) => {
         freezeTableName: true,
         timestamps: false
     });
-    return inventory;
+    return inventoryKantorKelurahanCilenggang;
 }

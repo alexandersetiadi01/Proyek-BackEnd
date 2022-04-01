@@ -7,8 +7,10 @@ module.exports = (express, app) => {
     router.put("/inventoryMasuk", controller.inventoryBarangMasuk);
     router.put("/inventoryKeluar", controller.inventoryBarangKeluar);
 
-    router.get("/", controller.seeAll);
-    router.get("/find", controller.findItem);
+    router.get("/vanyaParkClusterAzura", controller.seeAllVANYAPARKCLUSTERAZURA);
+    router.get("/kantorKeluarahanCilenggang", controller.seeAllKANTORKELURAHANCILENGGANG);
+    router.get("/findVanyaParkClusterAzura", controller.findInventoryVanyaParkClusterAzura);
+    router.get("/findKantorKelurahanCilenggang", controller.findInventoryKantorKelurahanCilenggang);
   
     app.use("/api/inventory", router);
   };

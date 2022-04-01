@@ -32,6 +32,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        satuan:{
+            type: DataTypes.STRING
+        },
         proyek:{
             type: DataTypes.STRING
         },

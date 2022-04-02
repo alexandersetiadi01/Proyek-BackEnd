@@ -10,7 +10,6 @@ module.exports = {
     idle: 10000
   }
 };
-
 /*
 HOST: "localhost",
     USER: "root",

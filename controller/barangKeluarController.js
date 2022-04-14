@@ -8,7 +8,7 @@ exports.create = async (req, res) => {
         quantity: req.body.quantity,  
         namaPengambil: req.body.namaPengambil,
         tgl: req.body.tgl,
-        progress: req.body.progress,
+        //progress: req.body.progress,
         status: "keluar",
         proyek: req.body.proyek,
         keterangan: req.body.keterangan,

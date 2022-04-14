@@ -10,13 +10,13 @@ exports.find = async (req, res) => {
 };
 
 exports.seeAll = async (req, res) => {
-    const satuan = await db.satuan.findAll();
+    const satuan = await db.Satuan.findAll();
 
     res.json(satuan)
 };
 
 exports.createSatuan = async (req, res) => {
-    const satuan = await db.satuan.create({
+    const satuan = await db.Satuan.create({
         satuan: req.body.satuan
     });
 

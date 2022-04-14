@@ -1,14 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
     const barangMasuk = sequelize.define('barangMasuk',
     {
-        namabarang:{ //FK master barang
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         kodemasuk:{ //PK auto increment
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
+        },
+        namabarang:{ //FK master barang
+            type: DataTypes.STRING,
+            allowNull: false
         },
         namaPenerima:{
             type: DataTypes.STRING,
@@ -21,10 +21,6 @@ module.exports = (sequelize, DataTypes) => {
         noSuratJalan:{
             type: DataTypes.STRING
         },
-        tgl:{ 
-            allowNull: false,
-            type: DataTypes.DATEONLY
-        }, 
         status:{
             type: DataTypes.STRING
         },
@@ -40,10 +36,15 @@ module.exports = (sequelize, DataTypes) => {
         },
         keterangan:{
             type: DataTypes.STRING
+        },
+        tgl:{ 
+            allowNull: false,
+            type: DataTypes.DATEONLY
         }
     },
     {
         freezeTableName: true,
+        timestamps: false
     });
     return barangMasuk;
 }

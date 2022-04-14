@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const satuan = sequelize.define('satuan',
+    const Satuan = sequelize.define('Satuan',
     {
         satuan:{ //PK
             type: DataTypes.STRING,
@@ -11,5 +11,5 @@ module.exports = (sequelize, DataTypes) => {
         freezeTableName: true,
         timestamps: false
     });
-    return satuan;
+    return Satuan;
 }

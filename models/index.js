@@ -29,38 +29,24 @@ db.PO = require("./POmodel")(sequelize, Sequelize);
 db.barangSisa = require("./barangSisaModel")(sequelize, Sequelize);
 db.outstanding = require("./outstandingModel")(sequelize, Sequelize);
 db.asset = require("./assetModel")(sequelize, Sequelize);
-db.satuan = require("./satuanModel")(sequelize, Sequelize);
+db.Satuan = require("./satuanModel")(sequelize, Sequelize);
 db.inventoryVanyaParkClusterAzura = require("./inventoryVanyaParkClusterAzureModel")(sequelize, Sequelize);
 db.inventoryKantorKelurahanCilenggang = require("./inventoryKantorKelurahanCilenggangModel")(sequelize, Sequelize);
-//db.masterBarang.hasMany(db.barangMasuk, {foreignKey: 'namabarang', targetKey: 'namabarang'})
+
+//db.kodebarangmasuk = require("./kodeBarangMasukModel")(sequelize, Sequelize);
+//db.barangMasuk.belongsTo(db.kodebarangmasuk, {foreignKey: 'noSuratJalan', source:"noSuratJalan"})
 
 db.barangMasuk.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
+db.barangMasuk.belongsTo(db.Satuan, {foreignKey: 'satuan', source: 'satuan'});
+//db.barangMasuk.belongsTo(db.proyeks, {foreignKey: 'namaProyek', source: 'proyek'});
+
 db.barangKeluar.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
 db.barangSisa.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
 //db.purchasing.belongsTo(db.barangMasuk, {foreignKey: "kodePO", source: "kodePO"});
 db.purchasing.belongsTo(db.PO, {foreignKey: "kodePO", source: "kodePO"});
+db.purchasing.belongsTo(db.PO, {foreignKey: "namabarang", source: "namabarang"});
 
-//db.users.hasMany(db.proyeks, {through})
-//db.barangMasuk.belongsTo(db.purchasing, {foreignKey: "kodePO", source: "kodePO"});
-//db.barangKeluar.belongsTo(db.purchasing, {foreignKey: "kodePO", source: "kodePO"});
-
-/*
-async function addUser(){
-  const count = await db.users.count();
-
-  if(count > 0){
-    return;
-  }else{
-    await db.users.createUser({ ID: "111", username: "Tester", password: "111", accountLevel: "ADMIN"});
-  }
-}
-
-// Include a sync option with seed data logic included.
-db.sync = async () => {
-  // Sync schema.
-  await db.sequelize.sync();
-  
-  await addUser();
-}; */
+//db.inventoryKantorKelurahanCilenggang.belongsTo(db.proyeks, {foreignKey: 'proyek', source: 'namaProyek'});
+//db.inventoryVanyaParkClusterAzura.belongsTo(db.proyeks, {foreignKey: 'proyek', source: 'namaProyek'});
 
 module.exports = db;

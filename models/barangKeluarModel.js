@@ -22,10 +22,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        progress:{
+        /*progress:{
             type: DataTypes.INTEGER,
             allowNull: false
-        },
+        }, */
         tgl:{
             type: DataTypes.DATEONLY,
             allowNull: false

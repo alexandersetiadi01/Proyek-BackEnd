@@ -3,7 +3,7 @@ module.exports = (express, app) => {
     const router = express.Router();
   
     router.get("/listBarangMasuk", controller.seeAllBarangMasuk);
-    router.get("/getSuratJalan", controller.findSuratJalan);
+    //router.get("/getSuratJalan", controller.findSuratJalan);
 
     router.get("/getPO", controller.getPO);
 

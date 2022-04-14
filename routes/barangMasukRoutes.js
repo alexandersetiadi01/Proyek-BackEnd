@@ -3,13 +3,12 @@ module.exports = (express, app) => {
     const router = express.Router();
   
     router.get("/listBarangMasuk", controller.seeAllBarangMasuk);
-
+    router.get("/getSuratJalan", controller.findSuratJalan);
 
     router.get("/getPO", controller.getPO);
-  
+
     router.post("/addBarangMasuk", controller.createBarangMasuk);
     router.post("/addBanyak", controller.masukbanyakBarang);
-    
 
   //  router.get("/Search", controller.searchByName);
   

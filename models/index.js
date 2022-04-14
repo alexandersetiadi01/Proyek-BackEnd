@@ -45,6 +45,7 @@ db.barangSisa.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'nam
 //db.purchasing.belongsTo(db.barangMasuk, {foreignKey: "kodePO", source: "kodePO"});
 db.purchasing.belongsTo(db.PO, {foreignKey: "kodePO", source: "kodePO"});
 db.purchasing.belongsTo(db.PO, {foreignKey: "namabarang", source: "namabarang"});
+//db.purchasing.belongsTo(db.Supplier, {foreignKey: "supplier", source: "namaSupplier"});
 
 //db.inventoryKantorKelurahanCilenggang.belongsTo(db.proyeks, {foreignKey: 'proyek', source: 'namaProyek'});
 //db.inventoryVanyaParkClusterAzura.belongsTo(db.proyeks, {foreignKey: 'proyek', source: 'namaProyek'});

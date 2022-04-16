@@ -22,8 +22,6 @@ exports.create = async (req, res) => {
         })
         res.json(barang)
     }
-
-    
 };
 
 exports.seeAllVANYAPARKCLUSTERAZURA = async (req, res) => {
@@ -31,44 +29,39 @@ exports.seeAllVANYAPARKCLUSTERAZURA = async (req, res) => {
     res.json(inventory);
 };
 
-
 exports.seeAllKANTORKELURAHANCILENGGANG = async (req, res) => {
     const inventory = await db.inventoryKantorKelurahanCilenggang.findAll();
     res.json(inventory);
 };
 
-exports.findItem = async (req, res) => {
-    /*const namabarang = JSON.stringify(req.body.namabarang)
-    const proyek = JSON.stringify(req.body.proyek)
-    const found = await db.inventory.findAll({
-        where: {
-            namabarang: namabarang,
-            proyek: proyek
-        }
-    });
-    if(found !== null) {
-        return true
-    }else{
-        return false
-    }*/
-    /*const found = await db.inventory.findAll({ 
-        where: { 
-            namabarang: req.params.namabarang, proyek: req.params.proyek 
-        } 
-    }).then(found => res.json(found));*/
-    if(req.body.proyek === "VANYA PARK CLUSTER AZURA"){
-        const found = await db.inventoryVanyaParkClusterAzura.findByPk(req.body.namabarang);
-        res.json(found);
-    }
-    if(req.body.proyek === "KANTOR KELURAHAN CILENGGANG"){
-        const found = await db.inventoryKantorKelurahanCilenggang.findByPk(req.query.namabarang);
-        res.json(found);
-    }
-   
-}
+exports.seeAllGUDANGLENGKONG= async (req, res) => {
+    const inventory = await db.inventoryGudangLengkong.findAll();
+    res.json(inventory);
+};
 
-exports.findInventoryVanyaParkClusterAzura = async (req, res) =>{
-    const found = await db.inventoryVanyaParkClusterAzura.findByPk(req.query.namabarang);
+exports.seeAllGUDANGSERPONG = async (req, res) => {
+    const inventory = await db.inventoryGudangSerpong.findAll();
+    res.json(inventory);
+};
+
+exports.seeAllSERPONGLAGOONA16 = async (req, res) => {
+    const inventory = await db.inventorySerpongLagoonA16.findAll();
+    res.json(inventory);
+};
+
+exports.seeAllKANAPARKCLUSTERNOBU = async (req, res) => {
+    const inventory = await db.inventoryKanaparkClusterNobu.findAll();
+    res.json(inventory);
+};
+
+exports.seeAllGATECLUSTER = async (req, res) => {
+    const inventory = await db.inventoryGateCluster.findAll();
+    res.json(inventory);
+};
+
+
+exports.findInventoryGudangSerpong = async (req, res) =>{
+    const found = await db.inventoryGudangSerpong.findByPk(req.query.namabarang);
     res.json(found);
 }
 
@@ -78,16 +71,218 @@ exports.findInventoryKantorKelurahanCilenggang = async (req, res) =>{
     res.json(found);
 }
 
-//testing (failed)
+
+exports.findInventoryVanyaParkClusterAzura = async (req, res) =>{
+    const found = await db.inventoryVanyaParkClusterAzura.findByPk(req.query.namabarang);
+    res.json(found);
+}
+
+
+exports.findInventoryGudarngLengkong = async (req, res) =>{
+    const found = await db.inventoryKantorKelurahanCilenggang.findByPk(req.query.namabarang);
+    res.json(found);
+}
+
 exports.inventoryBarangMasuk = async (req, res) => {
+    const data = req.body;
+    
+    for(let i = 0; i < data.length; i++){
+        
+        if(data[i].proyek === "VANYA PARK CLUSTER AZURA"){
+            const found = await db.inventoryVanyaParkClusterAzura.findByPk(data[i].namabarang);
+            if(found !== null){
+                const update = await db.inventoryVanyaParkClusterAzura.update(
+                    {   
+                        quantity: parseFloat(data[i].quantity) + found.quantity
+                    },
+                    {
+                        where: {
+                            namabarang: data[i].namabarang,
+                            //proyek: req.body.proyek
+                        }
+                    }
+                )
+                res.json(update);
+            }else{
+                const barang = await db.inventoryVanyaParkClusterAzura.create({
+                    //kodebarang: req.body.kodebarang,
+                    namabarang: data[i].namabarang,
+                    proyek: data[i].proyek,
+                    quantity: data[i].quantity,
+                    satuan: data[i].satuan
+                })
+                res.json(barang)
+            }
+        }
+        if(data[i].proyek === "KANTOR KELURAHAN CILENGGANG"){
+            const found = await db.inventoryKantorKelurahanCilenggang.findByPk(data[i].namabarang);
+            if(found !== null){
+        
+                const update = await db.inventoryKantorKelurahanCilenggang.update(
+                    {   
+                        quantity: parseFloat(data[i].quantity) + found.quantity
+                    },
+                    {
+                        where: {
+                            namabarang: data[i].namabarang,
+                            //proyek: req.body.proyek
+                        }
+                    }
+                )
+                res.json(update);
+            }else{
+                const barang = await db.inventoryKantorKelurahanCilenggang.create({
+                    //kodebarang: req.body.kodebarang,
+                    namabarang: data[i].namabarang,
+                    proyek: data[i].proyek,
+                    quantity: data[i].quantity,
+                    satuan: data[i].satuan
+                })
+                res.json(barang)
+            }
+        }  
+        if(data[i].proyek === "KANAPARK CLUSTER NOBU"){
+            const found = await db.inventoryKanaparkClusterNobu.findByPk(data[i].namabarang);
+            if(found !== null){
+        
+                const update = await db.inventoryKanaparkClusterNobu.update(
+                    {   
+                        quantity: parseFloat(data[i].quantity) + found.quantity
+                    },
+                    {
+                        where: {
+                            namabarang: data[i].namabarang,
+                            //proyek: req.body.proyek
+                        }
+                    }
+                )
+                res.json(update);
+            }else{
+                const barang = await db.inventoryKanaparkClusterNobu.create({
+                    //kodebarang: req.body.kodebarang,
+                    namabarang: data[i].namabarang,
+                    proyek: data[i].proyek,
+                    quantity: data[i].quantity,
+                    satuan: data[i].satuan
+                })
+                res.json(barang)
+            }
+        }
+        if(data[i].proyek === "GUDANG SERPONG"){
+            const found = await db.inventoryGudangSerpong.findByPk(data[i].namabarang);
+            if(found !== null){
+        
+                const update = await db.inventoryGudangSerpong.update(
+                    {   
+                        quantity: parseFloat(data[i].quantity) + found.quantity
+                    },
+                    {
+                        where: {
+                            namabarang: data[i].namabarang,
+                            //proyek: req.body.proyek
+                        }
+                    }
+                )
+                res.json(update);
+            }else{
+                const barang = await db.inventoryGudangSerpong.create({
+                    //kodebarang: req.body.kodebarang,
+                    namabarang: data[i].namabarang,
+                    proyek: data[i].proyek,
+                    quantity: data[i].quantity,
+                    satuan: data[i].satuan
+                })
+                res.json(barang)
+            }
+        }
+        if(data[i].proyek === "GUDANG LENGKONG"){
+            const found = await db.inventoryGudangLengkong.findByPk(data[i].namabarang);
+            if(found !== null){
+        
+                const update = await db.inventoryGudangLengkong.update(
+                    {   
+                        quantity: parseFloat(data[i].quantity) + found.quantity
+                    },
+                    {
+                        where: {
+                            namabarang: data[i].namabarang,
+                            //proyek: req.body.proyek
+                        }
+                    }
+                )
+                res.json(update);
+            }else{
+                const barang = await db.inventoryGudangLengkong.create({
+                    //kodebarang: req.body.kodebarang,
+                    namabarang: data[i].namabarang,
+                    proyek: data[i].proyek,
+                    quantity: data[i].quantity,
+                    satuan: data[i].satuan
+                })
+                res.json(barang)
+            }
+        }
+        if(data[i].proyek === "GATE CLUSTER"){
+            const found = await db.inventoryGateCluster.findByPk(data[i].namabarang);
+            if(found !== null){
+        
+                const update = await db.inventoryGateCluster.update(
+                    {   
+                        quantity: parseFloat(data[i].quantity) + found.quantity
+                    },
+                    {
+                        where: {
+                            namabarang: data[i].namabarang,
+                            //proyek: req.body.proyek
+                        }
+                    }
+                )
+                res.json(update);
+            }else{
+                const barang = await db.inventoryGateCluster.create({
+                    //kodebarang: req.body.kodebarang,
+                    namabarang: data[i].namabarang,
+                    proyek: data[i].proyek,
+                    quantity: data[i].quantity,
+                    satuan: data[i].satuan
+                })
+                res.json(barang)
+            }
+        }
+        if(data[i].proyek === "SERPONG LAGOON A16"){
+            const found = await db.inventorySerpongLagoonA16.findByPk(data[i].namabarang);
+            if(found !== null){
+        
+                const update = await db.inventorySerpongLagoonA16.update(
+                    {   
+                        quantity: parseFloat(data[i].quantity) + found.quantity
+                    },
+                    {
+                        where: {
+                            namabarang: data[i].namabarang,
+                            //proyek: req.body.proyek
+                        }
+                    }
+                )
+                res.json(update);
+            }else{
+                const barang = await db.inventorySerpongLagoonA16.create({
+                    //kodebarang: req.body.kodebarang,
+                    namabarang: data[i].namabarang,
+                    proyek: data[i].proyek,
+                    quantity: data[i].quantity,
+                    satuan: data[i].satuan
+                })
+                res.json(barang)
+            }
+        } 
+        
+    }
+    
+    /*
     if(req.body.proyek === "VANYA PARK CLUSTER AZURA"){
         const found = await db.inventoryVanyaParkClusterAzura.findByPk(req.body.namabarang);
-        /*const found = await db.inventory.findOne({
-            where: {
-                namabarang: req.body.namabarang,
-                proyek: req.body.proyek
-            }
-        });*/
+        
         if(found !== null){
     
             const update = await db.inventoryVanyaParkClusterAzura.update(
@@ -139,7 +334,8 @@ exports.inventoryBarangMasuk = async (req, res) => {
             })
             res.json(barang)
         }
-    }
+    }*/
+
 };
 
 exports.inventoryBarangKeluar = async (req, res) => {
@@ -227,3 +423,11 @@ exports.delete = (req, res) => {
 exports.deleteAll = (req, res) => {
   
 };
+
+
+/*const found = await db.inventory.findOne({
+            where: {
+                namabarang: req.body.namabarang,
+                proyek: req.body.proyek
+            }
+        });*/

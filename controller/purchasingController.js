@@ -4,11 +4,10 @@ const Op = db.Sequelize.Op;
 exports.createPurchasing = async (req, res) => {
     const found = await db.PO.findByPk(req.body.kodePO);
     if(found === null){
-        const PO = await db.PO.create({
-            kodePO: req.body.kodePO,
-            proyek: req.body.proyek
-        })
+        const PO = await db.PO.bulkCreate(req.body, {ignoreDuplicates: true})
     }
+    const purchase = await db.purchasing.bulkCreate(req.body);
+    /*
     const purchase = await db.purchasing.create({
         namabarang: req.body.namabarang,
         kodePO: req.body.kodePO,
@@ -18,7 +17,7 @@ exports.createPurchasing = async (req, res) => {
         tgl: req.body.tgl,
         supplier: req.body.supplier,
         proyek: req.body.proyek
-    });
+    });*/
 
     res.json(purchase);
 };

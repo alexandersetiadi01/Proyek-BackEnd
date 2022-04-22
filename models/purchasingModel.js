@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false
         },
+        satuan: {
+            type: DataTypes.STRING,
+        },
         totalHarga: {
             type: DataTypes.DOUBLE,
         },

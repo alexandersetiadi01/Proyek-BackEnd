@@ -6,6 +6,9 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
+        kodePO:{
+            type: DataTypes.STRING
+        },
         namabarang:{
             type: DataTypes.STRING
         },
@@ -17,12 +20,13 @@ module.exports = (sequelize, DataTypes) => {
             //allowNull: false
         },
         keterangan:{
-            type: DataTypes.STRING
-            
+            type: DataTypes.STRING  
+        },
+        tgl:{
+            type: DataTypes.DATEONLY
         },
         proyek:{
             type: DataTypes.STRING
-            
         }
     },
     {

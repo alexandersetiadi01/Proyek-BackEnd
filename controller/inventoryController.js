@@ -64,6 +64,37 @@ exports.seeAllGATECLUSTER = async (req, res) => {
     res.json(inventory);
 };
 
+exports.findInventory = async (req, res) =>{
+    let data = req.query
+    try{
+        const found = await db.inventory.findOne({
+            where: {
+                namabarang: data.namabarang,
+                proyek: data.proyek
+            }
+        })
+        res.json(found)
+    }catch(e){
+        console.error(e)
+    }
+    /*let data = req.body;
+    try{
+        for(let i = 0 ; i < data.length; i++){
+            const found = await db.inventory.findOne({
+                where: {
+                    namabarang: data[i].namabarang,
+                    proyek: data[i].proyek
+                }
+            });
+            res.json(found);
+        }
+    }catch (e){
+        console.error(e)
+    }*/
+    
+}
+    
+
 exports.findInventoryGateCluster = async (req, res) =>{
     const found = await db.inventoryGateCluster.findByPk(req.query.namabarang);
     res.json(found);
@@ -99,71 +130,51 @@ exports.findInventoryGudarngLengkong = async (req, res) =>{
     res.json(found);
 }
 
-/*
+
 exports.inventoryBarangMasuk = async (req, res) => {
-let data = req.body;
+    let data = req.body;
+    
     for(let i = 0; i < data.length; i++){
-        const found = await db.inventory.findOne({
-            where: {
-                namabarang: data[i].namabarang,
-                proyek: data[i].proyek
-            }
-        })
-        if(found !== null){
-            const update = await db.inventory.update(
-                {
-                    outstanding: parseFloat(data[i].quantity) + found.quantity
-                },
-                {
-                    where: {
-                        namabarang: data[i].namabarang,
-                        proyek: data[i].proyek
-                    } 
+        try{
+            const found = await db.inventory.findOne({
+                where: {
+                    namabarang: data[i].namabarang,
+                    proyek: data[i].proyek
                 }
-            )
-            res.json(update);
+            })
+            if(found !== null){
+                const update = await db.inventory.update(
+                    {
+                        quantity: parseFloat(data[i].quantity) + found.quantity
+                    },
+                    {
+                        where: {
+                            namabarang: data[i].namabarang,
+                            proyek: data[i].proyek
+                        } 
+                    }
+                )
+                res.json(update);
+            }else{
+                const create = await db.inventory.create({
+                    namabarang: data[i].namabarang,
+                    proyek: data[i].proyek,
+                    quantity: data[i].quantity,
+                    satuan: data[i].satuan
+                })
+
+                res.json(create)
+            }
+        }catch(e) {
+            console.error(e)
         }
     }
 }
-*/ 
 
+/*
 exports.inventoryBarangMasuk = async (req, res) => {
     const data = req.body;
 
-    /*for(let i = 0; i < data.length; i++){
-        const found = await db.inventory.findOne({
-            where: {
-                namabarang: data[i].namabarang,
-                proyek: data[i].proyek                
-            }
-        })
-
-        if(found !== null){
-            const update = await db.inventory.update(
-                {   
-                    quantity: parseFloat(data[i].quantity) + found.quantity
-                },
-                {
-                    where: {
-                        namabarang: data[i].namabarang,
-                        proyek: data[i].proyek
-                    }
-                }
-            )
-            res.json(update);
-        }else{
-            const barang = await db.inventory.create({
-                //kodebarang: req.body.kodebarang,
-                namabarang: data[i].namabarang,
-                proyek: data[i].proyek,
-                quantity: data[i].quantity,
-                satuan: data[i].satuan
-            })
-            res.json(barang)
-        }
-    }
-    */
-    
     for(let i = 0; i < data.length; i++){
         
         if(data[i].proyek === "VANYA PARK CLUSTER AZURA"){
@@ -358,35 +369,38 @@ exports.inventoryBarangMasuk = async (req, res) => {
     }
     
 };
+*/
 
 exports.inventoryBarangKeluar = async (req, res) => {
-    const data = req.body
-/*
-    for(let i = 0; i < data.length; i++){
+    let data = req.body;
+    try{
         const found = await db.inventory.findOne({
             where: {
-                namabarang: data[i].namabarang,
-                proyek: data[i].proyek                
+                namabarang: data.namabarang,
+                proyek: data.proyek
             }
         })
-
-        if(found !== null && found.quantity >= data[i].quantity){
-            const update = await db.inventoryVanyaParkClusterAzura.update(
+        if(found !== null && found.quantity >= data.quantity) {
+            const update = await db.inventory.update(
                 {   
-                    quantity: found.quantity - parseFloat(data[i].quantity)
+                    quantity: found.quantity - parseFloat(data.quantity)
                 },
                 {
                     where: {
-                        namabarang: req.body.namabarang,
-                        proyek: req.body.proyek
+                        namabarang: data.namabarang,
+                        proyek: data.proyek
                     }
                 }
             )
             res.json(update);
+        } else{
+            return null;
         }
+    }catch(e) {
+        console.error(e)
     }
-
-    */
+   
+    /*
     if(req.body.proyek === "VANYA PARK CLUSTER AZURA"){
         const found = await db.inventoryVanyaParkClusterAzura.findByPk(req.body.namabarang);
         
@@ -538,6 +552,7 @@ exports.inventoryBarangKeluar = async (req, res) => {
     }else{
         return null;
     }
+    */
 };
 
 

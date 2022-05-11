@@ -19,15 +19,28 @@ exports.createBarangMasuk = async (req, res) => {
     
 };
 exports.masukbanyakBarang = async (req, res) => {
-    const barang = await db.barangMasuk.bulkCreate(req.body);
-    res.json(barang)
+    try{
+        const barang = await db.barangMasuk.bulkCreate(req.body);
+        res.json(barang)
+    } catch (e) {
+        console.error(e);
+    }finally {
+        console.log('executed successfully');
+    }
+    
 };
 
 
 exports.seeAllBarangMasuk = async (req, res) => {
-    const barangMasuk = await db.barangMasuk.findAll();
+    try{
+        const barangMasuk = await db.barangMasuk.findAll({
+        order: [['tgl', 'DESC']]
+        });
 
-    res.json(barangMasuk);
+        res.json(barangMasuk);
+    }catch(e){
+        console.error(e)
+    }
 }
 
 exports.getPO = async (req, res) => {

@@ -24,9 +24,16 @@ exports.createPurchasing = async (req, res) => {
 };
 
 exports.seeAllPurchasing = async (req, res) => {
-    const purchase = await db.purchasing.findAll();
+    try{
+        const purchase = await db.purchasing.findAll({
+        order: [['tgl', 'DESC']]
+        });
 
-    res.json(purchase);
+        res.json(purchase);
+    }catch(e){
+        console.error(e)
+    }
+   
 };
 
 exports.getInfo = async (req, res) => {

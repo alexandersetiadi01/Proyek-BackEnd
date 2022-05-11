@@ -16,6 +16,7 @@ module.exports = (express, app) => {
     router.get("/gateCluster", controller.seeAllGATECLUSTER);
     router.get("/seeInventory", controller.seeAllInventory);
 
+    router.get("/find", controller.findInventory);
     router.get("/findVanyaParkClusterAzura", controller.findInventoryVanyaParkClusterAzura);
     router.get("/findKantorKelurahanCilenggang", controller.findInventoryKantorKelurahanCilenggang);
     router.get("/findGudangSerpong", controller.findInventoryGudangSerpong);

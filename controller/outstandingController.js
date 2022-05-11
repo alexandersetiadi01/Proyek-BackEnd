@@ -48,9 +48,15 @@ exports.create = async (req, res) => {
 };
 
 exports.seeAll = async (req, res) => {
-    const outstanding = await db.outstanding.findAll();
+    try{
+        const outstanding = await db.outstanding.findAll({
+        order: [['tgl', 'DESC']]
+        });
 
-    res.json(outstanding);
+        res.json(outstanding);
+    }catch(e){
+        console.error(e)
+    }
 };
 
 exports.select = async(req, res) => {
@@ -94,50 +100,55 @@ exports.select = async(req, res) => {
 
 exports.update = async(req, res) => {
     let data = req.body;
-    for(let i = 0; i < data.length; i++){
-        const found = await db.outstanding.findOne({
-            where: {
-                namabarang: data[i].namabarang,
-                proyek: data[i].proyek,
-                supplier: data[i].supplier
-            }
-        })
-        if(found !== null && found.outstanding >= data[i].quantity){
-            const update = await db.outstanding.update(
-                {
-                    outstanding: found.outstanding - parseFloat(data[i].quantity)
-                },
-                {
-                    where: {
-                        namabarang: data[i].namabarang,
-                        proyek: data[i].proyek,
-                        supplier: data[i].supplier
-                    } 
+    try{
+        for(let i = 0; i < data.length; i++){
+            const found = await db.outstanding.findOne({
+                where: {
+                    namabarang: data[i].namabarang,
+                    proyek: data[i].proyek,
+                    supplier: data[i].supplier
                 }
-            )
-            res.json(update);
-        }
-        const check = await db.outstanding.findOne({
-            where: {
-                namabarang: data[i].namabarang,
-                proyek: data[i].proyek,
-                supplier: data[i].supplier
-            }
-        })
-        if(check.outstanding === 0){
-            const outstanding = await db.outstanding.destroy(
-                {
-                    where:{
-                        namabarang: data[i].namabarang,
-                        proyek: data[i].proyek,
-                        supplier: data[i].supplier
+            })
+            if(found !== null && found.outstanding >= data[i].quantity){
+                const update = await db.outstanding.update(
+                    {
+                        outstanding: found.outstanding - parseFloat(data[i].quantity)
+                    },
+                    {
+                        where: {
+                            namabarang: data[i].namabarang,
+                            proyek: data[i].proyek,
+                            supplier: data[i].supplier
+                        } 
                     }
+                )
+                //res.json(update);
+            }
+            const check = await db.outstanding.findOne({
+                where: {
+                    namabarang: data[i].namabarang,
+                    proyek: data[i].proyek,
+                    supplier: data[i].supplier
                 }
-            )
-            //res.json(outstanding);
+            })
+            if(check.outstanding === 0){
+                const outstanding = await db.outstanding.destroy(
+                    {
+                        where:{
+                            namabarang: data[i].namabarang,
+                            proyek: data[i].proyek,
+                            supplier: data[i].supplier
+                        }
+                    }
+                )
+                //res.json(outstanding);
+            }
+            
         }
-        
+    }catch(e){
+        console.error(e);
     }
+    
 }
 
 exports.delete = (req, res) => {

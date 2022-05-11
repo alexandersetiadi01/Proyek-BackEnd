@@ -18,7 +18,14 @@ exports.createBarangSisa = async (req, res) => {
 
 
 exports.seeAllBarangSisa = async (req, res) => {
-    const barangSisa = await db.barangSisa.findAll();
+    try{
+        const barangSisa = await db.barangSisa.findAll({
+        order: [['tgl', 'DESC']]
+        });
 
-    res.json(barangSisa);
+        res.json(barangsisa);
+    }catch(e){
+        console.error(e)
+    }
+   
 }

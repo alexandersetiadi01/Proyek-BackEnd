@@ -1,15 +1,15 @@
 module.exports = (sequelize, DataTypes) => {
     const inventory = sequelize.define('inventory',
     {
-        /*id:{
+        id:{
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
-        },*/
+        },
         namabarang:{
             type: DataTypes.STRING,
             allowNull: false,
-            primaryKey: true
+            //primaryKey: true
         },
         quantity: {
             type: DataTypes.DOUBLE,

@@ -12,7 +12,8 @@ exports.createBarangMasuk = async (req, res) => {
         lokasi: req.body.lokasi,
         proyek: req.body.proyek,
         keterangan: req.body.keterangan,
-        satuan: req.body.satuan
+        satuan: req.body.satuan,
+        kodePO: ""
     });
     res.json(barang)
     

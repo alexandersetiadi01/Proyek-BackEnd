@@ -29,6 +29,7 @@ db.barangSisa = require("./barangSisaModel")(sequelize, Sequelize);
 db.outstanding = require("./outstandingModel")(sequelize, Sequelize);
 db.asset = require("./assetModel")(sequelize, Sequelize);
 db.Satuan = require("./satuanModel")(sequelize, Sequelize);
+db.inventory = require("./inventoryModel")(sequelize, Sequelize);
 db.inventoryVanyaParkClusterAzura = require("./inventoryVanyaParkClusterAzureModel")(sequelize, Sequelize);
 db.inventoryKantorKelurahanCilenggang = require("./inventoryKantorKelurahanCilenggangModel")(sequelize, Sequelize);
 db.inventoryGudangSerpong = require("./inventoryGudangSerpongModel")(sequelize, Sequelize);
@@ -48,9 +49,10 @@ db.barangKeluar.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'n
 db.barangSisa.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
 //db.purchasing.belongsTo(db.barangMasuk, {foreignKey: "kodePO", source: "kodePO"});
 db.purchasing.belongsTo(db.PO, {foreignKey: "kodePO", source: "kodePO"});
-//db.purchasing.belongsTo(db.PO, {foreignKey: "namabarang", source: "namabarang"});
 //db.purchasing.belongsTo(db.Supplier, {foreignKey: "supplier", source: "namaSupplier"});
 
+db.inventory.belongsTo(db.PO, {foreignKey: "namabarang", source: "namabarang"});
+db.inventory.belongsTo(db.Satuan, {foreignKey: "satuan", source: "satuan"});
 //db.inventoryKantorKelurahanCilenggang.belongsTo(db.proyeks, {foreignKey: 'proyek', source: 'namaProyek'});
 //db.inventoryVanyaParkClusterAzura.belongsTo(db.proyeks, {foreignKey: 'proyek', source: 'namaProyek'});
 

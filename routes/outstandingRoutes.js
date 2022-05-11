@@ -3,6 +3,9 @@ module.exports = (express, app) => {
     const router = express.Router();
   
     router.get("/", controller.seeAll);
+    router.get("/select", controller.select);
+
+    router.put("/update", controller.update);
   
     router.post("/", controller.create);
 

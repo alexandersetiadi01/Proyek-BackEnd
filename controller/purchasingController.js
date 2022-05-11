@@ -5,6 +5,7 @@ exports.createPurchasing = async (req, res) => {
     const found = await db.PO.findByPk(req.body.kodePO);
     if(found === null){
         const PO = await db.PO.bulkCreate(req.body, {ignoreDuplicates: true})
+        res.json(PO)
     }
     const purchase = await db.purchasing.bulkCreate(req.body);
     /*

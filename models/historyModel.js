@@ -10,6 +10,9 @@ module.exports = (sequelize, DataTypes) => {
         quantity:{
             type: DataTypes.INTEGER,
         },
+        satuan:{
+            type: DataTypes.STRING,
+        },
         tgl:{ 
             type: DataTypes.DATEONLY
         }, 

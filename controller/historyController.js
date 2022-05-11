@@ -15,14 +15,16 @@ exports.seeInventory = async (req, res) => {
 
 
 exports.addHistory = async (req, res) => {
-    const barang = await db.history.create({
-        proyek: req.body.proyek,
-        namabarang: req.body.namabarang,
-        quantity: req.body.quantity,  
-        tgl: req.body.tgl,
-        status: req.body.status,        
-        lokasi: req.body.lokasi
-    });
+    const barang = await db.history.bulkCreate(req.body
+        /*{
+            proyek: req.body.proyek,
+            namabarang: req.body.namabarang,
+            quantity: req.body.quantity,  
+            tgl: req.body.tgl,
+            status: req.body.status,        
+            lokasi: req.body.lokasi
+        }*/
+    );
     res.json(barang)
 };
 

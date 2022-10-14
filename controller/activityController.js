@@ -51,7 +51,7 @@ exports.addActivityKeluar = async (req, res) => {
 exports.addActivityPurchasing = async (req, res) => {
     const barang = await db.activity.create({
         username: req.body.username,
-        action: "Purchasing",
+        action: "RAP",
         tgl: req.body.tgl,
         proyek: req.body.proyek
     });

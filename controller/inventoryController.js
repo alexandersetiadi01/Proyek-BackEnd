@@ -29,36 +29,37 @@ exports.seeAllInventory = async (req, res) => {
     res.json(inventory);
 };
 
+// gk pake
 exports.seeAllVANYAPARKCLUSTERAZURA = async (req, res) => {
     const inventory = await db.inventoryVanyaParkClusterAzura.findAll();
     res.json(inventory);
 };
-
+// gk pake
 exports.seeAllKANTORKELURAHANCILENGGANG = async (req, res) => {
     const inventory = await db.inventoryKantorKelurahanCilenggang.findAll();
     res.json(inventory);
 };
-
+// gk pake
 exports.seeAllGUDANGLENGKONG= async (req, res) => {
     const inventory = await db.inventoryGudangLengkong.findAll();
     res.json(inventory);
 };
-
+// gk pake
 exports.seeAllGUDANGSERPONG = async (req, res) => {
     const inventory = await db.inventoryGudangSerpong.findAll();
     res.json(inventory);
 };
-
+// gk pake
 exports.seeAllSERPONGLAGOONA16 = async (req, res) => {
     const inventory = await db.inventorySerpongLagoonA16.findAll();
     res.json(inventory);
 };
-
+// gk pake
 exports.seeAllKANAPARKCLUSTERNOBU = async (req, res) => {
     const inventory = await db.inventoryKanaparkClusterNobu.findAll();
     res.json(inventory);
 };
-
+// gk pake
 exports.seeAllGATECLUSTER = async (req, res) => {
     const inventory = await db.inventoryGateCluster.findAll();
     res.json(inventory);
@@ -94,7 +95,7 @@ exports.findInventory = async (req, res) =>{
     
 }
     
-
+/* gk pake */
 exports.findInventoryGateCluster = async (req, res) =>{
     const found = await db.inventoryGateCluster.findByPk(req.query.namabarang);
     res.json(found);
@@ -171,7 +172,7 @@ exports.inventoryBarangMasuk = async (req, res) => {
     }
 }
 
-/*
+/* gk pake
 exports.inventoryBarangMasuk = async (req, res) => {
     const data = req.body;
 
@@ -400,7 +401,7 @@ exports.inventoryBarangKeluar = async (req, res) => {
         console.error(e)
     }
    
-    /*
+    /* gk pake
     if(req.body.proyek === "VANYA PARK CLUSTER AZURA"){
         const found = await db.inventoryVanyaParkClusterAzura.findByPk(req.body.namabarang);
         

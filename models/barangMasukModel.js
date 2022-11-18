@@ -6,10 +6,10 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        kodePO: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+        // kodePO: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false
+        // },
         namabarang:{ //FK master barang
             type: DataTypes.STRING,
             allowNull: false

@@ -10,6 +10,8 @@ module.exports = (express, app) => {
     router.post("/addBarangMasuk", controller.createBarangMasuk);
     router.post("/addBanyak", controller.masukbanyakBarang);
 
+    router.post("/getNamaBarangMasuk", controller.getNamaBarangMasuk);
+
   //  router.get("/Search", controller.searchByName);
   
     app.use("/api/barangMasuk", router);

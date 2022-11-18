@@ -14,7 +14,7 @@ exports.createBarangMasuk = async (req, res) => {
         proyek: req.body.proyek,
         keterangan: req.body.keterangan,
         satuan: req.body.satuan,
-        kodePO: ""
+        // kodePO: ""
     });
     res.json(barang)
     
@@ -29,7 +29,6 @@ exports.masukbanyakBarang = async (req, res) => {
     
 };
 
-
 exports.seeAllBarangMasuk = async (req, res) => {
     try{
         const barangMasuk = await db.barangMasuk.findAll({
@@ -37,6 +36,22 @@ exports.seeAllBarangMasuk = async (req, res) => {
                 proyek: req.body.proyek
             },
             order: [['tgl', 'DESC']]
+        });
+
+        res.json(barangMasuk);
+    }catch(e){
+        console.error(e)
+    }
+}
+
+exports.getNamaBarangMasuk = async (req, res) => {
+    try{
+        const barangMasuk = await db.barangMasuk.findAll({
+            attributes: ['namabarang'],
+            where:{
+                proyek: req.body.proyek
+            },
+            // order: [['tgl', 'DESC']]
         });
 
         res.json(barangMasuk);

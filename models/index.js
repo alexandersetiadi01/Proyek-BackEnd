@@ -33,11 +33,11 @@ db.inventory = require("./inventoryModel")(sequelize, Sequelize);
 db.RAP = require("./RAPModel")(sequelize, Sequelize);
 db.budget = require("./budgetModel")(sequelize, Sequelize);
 
-db.barangMasuk.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
-db.barangMasuk.belongsTo(db.Satuan, {foreignKey: 'satuan', source: 'satuan'});
+// db.barangMasuk.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
+// db.barangMasuk.belongsTo(db.Satuan, {foreignKey: 'satuan', source: 'satuan'});
 
-db.barangKeluar.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
-db.barangKeluar.belongsTo(db.Satuan, {foreignKey: 'satuan', source: 'satuan'});
+// db.barangKeluar.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
+// db.barangKeluar.belongsTo(db.Satuan, {foreignKey: 'satuan', source: 'satuan'});
 
 db.barangSisa.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
 db.barangSisa.belongsTo(db.Satuan, {foreignKey: 'satuan', source: 'satuan'});

@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        kodePO:{
+        supplier:{
             type: DataTypes.STRING
         },
         namabarang:{
@@ -18,6 +18,9 @@ module.exports = (sequelize, DataTypes) => {
         ordered: {
             type: DataTypes.DOUBLE,
             //allowNull: false
+        },
+        satuan:{
+            type: DataTypes.STRING
         },
         keterangan:{
             type: DataTypes.STRING  

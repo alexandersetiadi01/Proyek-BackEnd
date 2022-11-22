@@ -1,22 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
-    const inventory = sequelize.define('inventory',
+    const RAP = sequelize.define('RAP',
     {
-        id:{
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
         namabarang:{
             type: DataTypes.STRING,
-            allowNull: false,
-            //primaryKey: true
+            allowNull: false
+        },
+        harga: {
+            type: DataTypes.DOUBLE,
         },
         quantity: {
             type: DataTypes.DOUBLE,
             allowNull: false
-        }, 
-        satuan:{
-            type: DataTypes.STRING
+        },
+        satuan: {
+            type: DataTypes.STRING,
         },
         proyek: {
             type: DataTypes.STRING,
@@ -27,5 +24,5 @@ module.exports = (sequelize, DataTypes) => {
         freezeTableName: true,
         timestamps: false
     });
-    return inventory;
+    return RAP;
 }

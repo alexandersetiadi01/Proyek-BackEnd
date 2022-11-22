@@ -21,37 +21,33 @@ db.barangMasuk = require("./barangMasukModel")(sequelize, Sequelize);
 //db.history = require("./historyModel")(sequelize, Sequelize);
 db.users = require("./user")(sequelize, Sequelize);
 db.proyeks = require("./proyekModel")(sequelize, Sequelize);
-db.purchasing = require("./purchasingModel")(sequelize, Sequelize);
+//db.purchasing = require("./purchasingModel")(sequelize, Sequelize);
 db.activity = require("./acivityModel")(sequelize, Sequelize);
 db.supplier = require("./supplierModel")(sequelize, Sequelize);
 db.PO = require("./POmodel")(sequelize, Sequelize);
 db.barangSisa = require("./barangSisaModel")(sequelize, Sequelize);
-db.outstanding = require("./outstandingModel")(sequelize, Sequelize);
+//db.outstanding = require("./outstandingModel")(sequelize, Sequelize);
 db.asset = require("./assetModel")(sequelize, Sequelize);
 db.Satuan = require("./satuanModel")(sequelize, Sequelize);
-db.inventoryVanyaParkClusterAzura = require("./inventoryVanyaParkClusterAzureModel")(sequelize, Sequelize);
-db.inventoryKantorKelurahanCilenggang = require("./inventoryKantorKelurahanCilenggangModel")(sequelize, Sequelize);
-db.inventoryGudangSerpong = require("./inventoryGudangSerpongModel")(sequelize, Sequelize);
-db.inventorySerpongLagoonA16 = require("./inventorySerpongLagoonA16Model")(sequelize, Sequelize);
-db.inventoryGateCluster = require("./inventoryGateClusterModel")(sequelize, Sequelize);
-db.inventoryKanaparkClusterNobu = require("./inventoryKanaparkClusterNobuModel")(sequelize, Sequelize);
-db.inventoryGudangLengkong = require("./inventoryGudangLengkongModel")(sequelize, Sequelize);
+db.inventory = require("./inventoryModel")(sequelize, Sequelize);
+db.RAP = require("./RAPModel")(sequelize, Sequelize);
+db.budget = require("./budgetModel")(sequelize, Sequelize);
 
-//db.kodebarangmasuk = require("./kodeBarangMasukModel")(sequelize, Sequelize);
-//db.barangMasuk.belongsTo(db.kodebarangmasuk, {foreignKey: 'noSuratJalan', source:"noSuratJalan"})
+// db.barangMasuk.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
+// db.barangMasuk.belongsTo(db.Satuan, {foreignKey: 'satuan', source: 'satuan'});
 
-db.barangMasuk.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
-db.barangMasuk.belongsTo(db.Satuan, {foreignKey: 'satuan', source: 'satuan'});
-//db.barangMasuk.belongsTo(db.proyeks, {foreignKey: 'namaProyek', source: 'proyek'});
+// db.barangKeluar.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
+// db.barangKeluar.belongsTo(db.Satuan, {foreignKey: 'satuan', source: 'satuan'});
 
-db.barangKeluar.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
 db.barangSisa.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
-//db.purchasing.belongsTo(db.barangMasuk, {foreignKey: "kodePO", source: "kodePO"});
-db.purchasing.belongsTo(db.PO, {foreignKey: "kodePO", source: "kodePO"});
-//db.purchasing.belongsTo(db.PO, {foreignKey: "namabarang", source: "namabarang"});
-//db.purchasing.belongsTo(db.Supplier, {foreignKey: "supplier", source: "namaSupplier"});
+db.barangSisa.belongsTo(db.Satuan, {foreignKey: 'satuan', source: 'satuan'});
 
-//db.inventoryKantorKelurahanCilenggang.belongsTo(db.proyeks, {foreignKey: 'proyek', source: 'namaProyek'});
-//db.inventoryVanyaParkClusterAzura.belongsTo(db.proyeks, {foreignKey: 'proyek', source: 'namaProyek'});
+//db.purchasing.belongsTo(db.PO, {foreignKey: "kodePO", source: "kodePO"});
+//db.purchasing.belongsTo(db.masterBarang, {foreignKey: "namabarang", source: "namabarang"});
+
+db.inventory.belongsTo(db.masterBarang, {foreignKey: "namabarang", source: "namabarang"});
+db.inventory.belongsTo(db.Satuan, {foreignKey: "satuan", source: "satuan"});
+
+db.RAP.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
 
 module.exports = db;

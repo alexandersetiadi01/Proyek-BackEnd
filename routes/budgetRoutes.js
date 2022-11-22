@@ -1,8 +1,11 @@
 module.exports = (express, app) => {
-    const controller = require("../controller/outstandingController.js");
+    const controller = require("../controller/budgetController.js");
     const router = express.Router();
   
     router.get("/", controller.seeAll);
+    router.get("/select", controller.select);
+
+    router.put("/update", controller.update);
   
     router.post("/", controller.create);
 

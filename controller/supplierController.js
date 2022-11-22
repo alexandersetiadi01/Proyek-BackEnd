@@ -13,9 +13,9 @@ exports.createSupplier = async (req, res) => {
 };
 
 exports.seeAllSupplier = async (req, res) => {
-    const purchase = await db.supplier.findAll();
+    const supplier = await db.supplier.findAll();
 
-    res.json(purchase);
+    res.json(supplier);
 };
 
 exports.selectSupplier = async (req, res) => {

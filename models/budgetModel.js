@@ -1,21 +1,25 @@
 module.exports = (sequelize, DataTypes) => {
-    const inventory = sequelize.define('inventory',
+    const budget = sequelize.define('budget',
     {
-        id:{
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
         namabarang:{
             type: DataTypes.STRING,
             allowNull: false,
-            //primaryKey: true
         },
+        satuan:{
+            type: DataTypes.STRING
+        },
+        quantityRAP: {
+            type: DataTypes.DOUBLE,
+            allowNull: false
+        }, 
         quantity: {
             type: DataTypes.DOUBLE,
             allowNull: false
         }, 
-        satuan:{
+        totalQTY:{
+            type: DataTypes.DOUBLE
+        },
+        status:{
             type: DataTypes.STRING
         },
         proyek: {
@@ -27,5 +31,5 @@ module.exports = (sequelize, DataTypes) => {
         freezeTableName: true,
         timestamps: false
     });
-    return inventory;
+    return budget;
 }

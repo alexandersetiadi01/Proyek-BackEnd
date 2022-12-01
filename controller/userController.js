@@ -20,13 +20,19 @@ exports.findAllUser = async (req, res) => {
 }
 
 exports.createUser = async (req, res) => {
-    const hash = await argon2.hash(req.body.password, { type: argon2.argon2id });
-    const user = await db.users.create({
-        ID: req.body.ID,
-        username: req.body.username,
-        password: hash,
-        accountLevel: req.body.accountLevel
-    })
+    try{
+        const hash = await argon2.hash(req.body.password, { type: argon2.argon2id });
+        const user = await db.users.create({
+            ID: req.body.ID,
+            username: req.body.username,
+            password: hash,
+            accountLevel: req.body.accountLevel
+        })
+        res.json(user)
+    }catch(e){
+        res.json(e)
+    }
+    
 
     res.json(user);
 };

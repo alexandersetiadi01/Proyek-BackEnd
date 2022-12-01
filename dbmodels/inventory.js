@@ -1,15 +1,15 @@
 module.exports = (sequelize, DataTypes) => {
-    const inventoryKanaparkClusterNobu = sequelize.define('inventoryKanaparkClusterNobu',
+    const inventory = sequelize.define('inventory',
     {
-        /*id:{
+        id:{
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
-        },*/
-        namabarang:{
+        },
+        kodebarang:{
             type: DataTypes.STRING,
             allowNull: false,
-            primaryKey: true
+            //primaryKey: true
         },
         quantity: {
             type: DataTypes.DOUBLE,
@@ -27,5 +27,5 @@ module.exports = (sequelize, DataTypes) => {
         freezeTableName: true,
         timestamps: false
     });
-    return inventoryKanaparkClusterNobu;
+    return inventory;
 }

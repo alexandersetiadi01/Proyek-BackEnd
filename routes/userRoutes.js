@@ -6,7 +6,7 @@ module.exports = (express, app) => {
     
     router.get("/", controller.findAllUser);
     
-    router.post("/", controller.createUser);
+    router.post("/create", controller.createUser);
 
     router.put("/", controller.updateUser);
   

@@ -1,23 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
-    const inventoryGateCluster = sequelize.define('inventoryGateCluster',
+    const codemaster = sequelize.define('codemaster',
     {
-        /*id:{
-            type: DataTypes.INTEGER,
+        idcodemaster:{
+            type: DataTypes.STRING,
             primaryKey: true,
-            autoIncrement: true
-        },*/
-        namabarang:{
+            // autoIncrement: true
+        },
+        deskripsi:{
             type: DataTypes.STRING,
             allowNull: false,
-            primaryKey: true
+            //primaryKey: true
         },
-        quantity: {
-            type: DataTypes.DOUBLE,
+        status: {
+            type: DataTypes.BOOLEAN,
             allowNull: false
         }, 
-        satuan:{
-            type: DataTypes.STRING
-        },
         proyek: {
             type: DataTypes.STRING,
             //allowNull: false
@@ -27,5 +24,5 @@ module.exports = (sequelize, DataTypes) => {
         freezeTableName: true,
         timestamps: false
     });
-    return inventoryGateCluster;
+    return codemaster;
 }

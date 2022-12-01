@@ -15,12 +15,23 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
+
+// --- model baru --- //
+// db.masterbarang = require("../dbmodels/masterBarang")(sequelize, Sequelize);
+// db.barangmasuk = require("../dbmodels/barangMasuk")(sequelize, Sequelize);
+// db.inventory = require("../dbmodels/inventory")(sequelize, Sequelize);
+// db.codemaster = require("../dbmodels/codeMaster")(sequelize, Sequelize);
+// db.codedetail = require("../dbmodels/codeDetail")(sequelize, Sequelize);
+
+
+
+// --- mode lama //
+db.users = require("./user")(sequelize, Sequelize);
+db.proyeks = require("./proyekModel")(sequelize, Sequelize);
 db.masterBarang = require("./masterBarangModel")(sequelize, Sequelize);
 db.barangKeluar = require("./barangKeluarModel")(sequelize, Sequelize);
 db.barangMasuk = require("./barangMasukModel")(sequelize, Sequelize);
 //db.history = require("./historyModel")(sequelize, Sequelize);
-db.users = require("./user")(sequelize, Sequelize);
-db.proyeks = require("./proyekModel")(sequelize, Sequelize);
 //db.purchasing = require("./purchasingModel")(sequelize, Sequelize);
 db.activity = require("./acivityModel")(sequelize, Sequelize);
 db.supplier = require("./supplierModel")(sequelize, Sequelize);
@@ -39,15 +50,15 @@ db.budget = require("./budgetModel")(sequelize, Sequelize);
 // db.barangKeluar.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
 // db.barangKeluar.belongsTo(db.Satuan, {foreignKey: 'satuan', source: 'satuan'});
 
-db.barangSisa.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
-db.barangSisa.belongsTo(db.Satuan, {foreignKey: 'satuan', source: 'satuan'});
+// db.barangSisa.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
+// db.barangSisa.belongsTo(db.Satuan, {foreignKey: 'satuan', source: 'satuan'});
 
-//db.purchasing.belongsTo(db.PO, {foreignKey: "kodePO", source: "kodePO"});
-//db.purchasing.belongsTo(db.masterBarang, {foreignKey: "namabarang", source: "namabarang"});
+// db.purchasing.belongsTo(db.PO, {foreignKey: "kodePO", source: "kodePO"});
+// db.purchasing.belongsTo(db.masterBarang, {foreignKey: "namabarang", source: "namabarang"});
 
 db.inventory.belongsTo(db.masterBarang, {foreignKey: "namabarang", source: "namabarang"});
 db.inventory.belongsTo(db.Satuan, {foreignKey: "satuan", source: "satuan"});
 
-db.RAP.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
+// db.RAP.belongsTo(db.masterBarang, {foreignKey: 'namabarang', source: 'namabarang'});
 
 module.exports = db;
